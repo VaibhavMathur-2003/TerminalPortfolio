@@ -6,10 +6,25 @@ import gradient from 'gradient-string';
 import figlet from 'figlet';
 import chalkAnimation from 'chalk-animation';
 
+const sleep = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms));
+
+
 async function welcome() {
-  console.log(
-    gradient.rainbow(figlet.textSync('Welcome to My Portfolio!', { horizontalLayout: 'default' }))
-  );
+  figlet("Vaibhav Mathur", function (err, data) {
+    if (err) {
+      console.log("Something went wrong...");
+      console.dir(err);
+      return;
+    }
+    console.log(gradient('green', 'cyan')(data));
+  });
+
+  await sleep();
+
+  console.log(`
+    ${chalk.bgBlue(`What's This?`)} 
+    I am a CLI portfolio app. You can explore different sections of my portfolio by selecting the corresponding option from the menu.
+  `);
 }
 
 async function askForOption() {
@@ -31,78 +46,69 @@ async function askForOption() {
 
 async function displaySkills() {
   console.log(chalk.bold.underline.green('Skills'));
-  // Display your skills here
-  console.log(
-    chalk.green(`Development:`),
-    chalk.yellow('React, NextJs, Redux, NodeJs, Express, Socket.io, Firebase, RestAPI, Pytorch, Tensorflow, Scikit Learn, Selenium, Beautifulsoup, Netlify, Bootstrap, MaterialUI.'),
-    chalk.green(`Languages:`),
-    chalk.yellow('C++, JavaScript, Python, TypeScript, HTML, CSS.'),
-    chalk.green(`Database:`),
-    chalk.yellow('MySQL, MongoDB.'),
-    chalk.green(`Relevant Coursework:`),
-    chalk.yellow('Data Structures and Algorithms, Algorithm Design, Artificial Intelligence, Machine Learning, Computer Networks, OOPs.'),
-    chalk.green(`Tools:`),
-    chalk.yellow('VS Code, GitHub, Jupyter, Postman, Vite, Jira, Notion, MS Excel, QtSpim.'),
-    chalk.green(`Other Skills:`),
-    chalk.yellow('Management, Communication, Leadership.')
-  );
+  console.log(chalk.yellow('Development:'), chalk.white('React, NextJs, Redux, NodeJs, Express, Socket.io, Firebase, RestAPI, Pytorch, Tensorflow, Scikit Learn, Selenium, Beautifulsoup, Netlify, Bootstrap, MaterialUI.'));
+  console.log(chalk.yellow('Languages:'), chalk.white('C++, JavaScript, Python, TypeScript, HTML, CSS.'));
+  console.log(chalk.yellow('Database:'), chalk.white('MySQL, MongoDB.'));
+  console.log(chalk.yellow('Relevant Coursework:'), chalk.white('Data Structures and Algorithms, Algorithm Design, Artificial Intelligence, Machine Learning, Computer Networks, OOPs.'));
+  console.log(chalk.yellow('Tools:'), chalk.white('VS Code, GitHub, Jupyter, Postman, Vite, Jira, Notion, MS Excel, QtSpim.'));
+  console.log(chalk.yellow('Other Skills:'), chalk.white('Management, Communication, Leadership.'));
 }
 
 async function displayProjects() {
   console.log(chalk.bold.underline.green('Projects'));
-  // Display your projects here
-  console.log(
-    `No-Code Website Builder with MERN Stack ${chalk.green.bold('[Website]')}, ${chalk.blue.bold('[Frontend Github]')}, ${chalk.blue.bold('[Backend Github]')} (January 2024 – Present)\n`,
-    `• Built a full-stack web application (MERN stack) that empowers users to create websites with a drag-and-drop interface.\n`,
-    `• No coding required: Users can visually design websites by dragging and dropping pre-built, customizable components.\n`,
-    `• Effortless export: The builder automatically generates the complete frontend code upon completion, ready to be used anywhere.\n\n`,
-    `Full Stack Chat WebApp ${chalk.green.bold('[Website]')}, ${chalk.blue.bold('[Github]')} (February 2023 – July 2023)\n`,
-    `• Developed a MERN stack chat application with real-time chat and secure login.\n`,
-    `• Created interactive UI with React, achieved real-time messaging using Socket.io, and ensured security using encryption.\n`,
-    `• Utilized React, Socket.io for messaging, scripts, and Node.js, Express, and MongoDB for backend and data handling.\n\n`,
-    `Algorithm Visualizer. ${chalk.green.bold('[Website]')}, ${chalk.blue.bold('[Github]')} (June 2023 – August 2023)\n`,
-    `• Built an interactive algorithm visualizer using React to explain concepts like searching, sorting, and pathfinding algorithms.\n`,
-    `• Implemented efficient algorithms using Javascript, including selection sort, binary search, and Breadth-First Search (BFS).\n`,
-    `• Included advanced algorithms like A*, which is significantly faster than Dijkstra’s algorithm.\n`
-  );
+  console.log(`
+    ${chalk.blue('No-Code Website Builder with MERN Stack')} ${chalk.green.bold('[Website]')}, ${chalk.blue.bold('[Frontend Github]')}, ${chalk.blue.bold('[Backend Github]')} (January 2024 – Present)
+    • Built a full-stack web application (MERN stack) that empowers users to create websites with a drag-and-drop interface.
+    • No coding required: Users can visually design websites by dragging and dropping pre-built, customizable components.
+    • Effortless export: The builder automatically generates the complete frontend code upon completion, ready to be used anywhere.
+
+    ${chalk.blue('Full Stack Chat WebApp')} ${chalk.green.bold('[Website]')}, ${chalk.blue.bold('[Github]')} (February 2023 – July 2023)
+    • Developed a MERN stack chat application with real-time chat and secure login.
+    • Created interactive UI with React, achieved real-time messaging using Socket.io, and ensured security using encryption.
+    • Utilized React, Socket.io for messaging, scripts, and Node.js, Express, and MongoDB for backend and data handling.
+
+    ${chalk.blue('Algorithm Visualizer.')} ${chalk.green.bold('[Website]')}, ${chalk.blue.bold('[Github]')} (June 2023 – August 2023)
+    • Built an interactive algorithm visualizer using React to explain concepts like searching, sorting, and pathfinding algorithms.
+    • Implemented efficient algorithms using Javascript, including selection sort, binary search, and Breadth-First Search (BFS).
+    • Included advanced algorithms like A*, which is significantly faster than Dijkstra's algorithm.
+  `);
 }
 
 async function displayAboutMe() {
   console.log(chalk.bold.underline.green('About Me'));
-  // Display information about yourself here
-  console.log(
-    `• Worked as a Software Development Engineer Intern at a startup named Oxytocin.\n`,
-    `• Co-Head of Web Development Team for Google Developer Student Club (GDSC) in IIT Goa.\n`,
-    `• Member of Web Development Team at Indian Institute of Technology, Goa.\n`,
-    `• Loves learning new things and solving problems.\n\n`,
-    `• Conducted workshops for 12 schools as a lecturer in Goa and managed events for college fests, including IIT Goa’s annual tech and cultural festivals as event head and part of the management team.\n`,
-    `• Mentored school students about coding basics using Scratch`
-  );
+  console.log(`
+    • Worked as a Software Development Engineer Intern at a startup named Oxytocin.
+    • Co-Head of Web Development Team for Google Developer Student Club (GDSC) in IIT Goa.
+    • Member of Web Development Team at Indian Institute of Technology, Goa.
+    • Loves learning new things and solving problems.
+
+    • Conducted workshops for 12 schools as a lecturer in Goa and managed events for college fests, including IIT Goa's annual tech and cultural festivals as event head and part of the management team.
+    • Mentored school students about coding basics using Scratch.
+  `);
 }
 
 async function displayExperience() {
   console.log(chalk.bold.underline.green('Experience'));
-  // Display your experience here
-  console.log(
-    `Oxytocin (Startup) – Internship – Full Stack Developer. ${chalk.green.bold('[Website]')} (August 2022 – September 2022)\n`,
-    `• A startup focused on real estate technology, tasked with enhancing a property value website.\n`,
-    `• As a Full Stack Developer intern, responsible for adding 6+ features using React, TypeScript, Redux, Express, and MySQL in 8 weeks.\n`,
-    `• Developed search, filtering, and nearest property functionalities, collaborating closely with teams.\n`,
-    `• Enhanced user experience with advanced features, showcasing effective tech stack use.\n\n`,
-    `OPOC (Software development) – Internship – Back-end Developer. ${chalk.green.bold('[Website], [Github]')} (June 2023 – July 2023)\n`,
-    `• Involved in backend development for a discussion platform, leading a 6-member team.\n`,
-    `• Lead team in Node.js, Socket.io for backend development, employed Selenium, and Beautifulsoup for web-scraping, and implemented MongoDB for data management.\n`,
-    `• Successful discussion platform backend, efficient web scraping, and effective data handling.`
-  );
+  console.log(`
+    ${chalk.blue('Oxytocin')} (Startup) – Internship – Full Stack Developer. ${chalk.green.bold('[Website]')} (August 2022 – September 2022)
+    • A startup focused on real estate technology, tasked with enhancing a property value website.
+    • As a Full Stack Developer intern, responsible for adding 6+ features using React, TypeScript, Redux, Express, and MySQL in 8 weeks.
+    • Developed search, filtering, and nearest property functionalities, collaborating closely with teams.
+    • Enhanced user experience with advanced features, showcasing effective tech stack use.
+
+    ${chalk.blue('OPOC')} (Software development) – Internship – Back-end Developer. ${chalk.green.bold('[Website], [Github]')} (June 2023 – July 2023)
+    • Involved in backend development for a discussion platform, leading a 6-member team.
+    • Lead team in Node.js, Socket.io for backend development, employed Selenium, and Beautifulsoup for web-scraping, and implemented MongoDB for data management.
+    • Successful discussion platform backend, efficient web scraping, and effective data handling.
+  `);
 }
 
 async function displayHobbies() {
   console.log(chalk.bold.underline.green('Hobbies'));
-  // Display your hobbies here
-  console.log(
-    `Playing Football 4+ days in a week, Travelling, Listening to music of 5+ different genres, Coding.\n`,
-    `• Played in a futsal team of 5 members in a sporting event of IIT Goa.`
-  );
+  console.log(`
+    • Playing Football 4+ days in a week, Travelling, Listening to music of 5+ different genres, Coding.
+    • Played in a futsal team of 5 members in a sporting event of IIT Goa.
+  `);
 }
 
 async function handleOption(option) {
